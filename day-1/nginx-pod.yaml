@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  
+  labels:
+    run: nginx-pod
+  name: nginx-pod
+spec:
+  containers:
+  - image: nginx
+    name: nginx-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+#  kubectl run nginx-pod --image=nginx --dry-run=client  -o yaml > nginx-pod.yaml
+#  kubectl apply -f nginx-pod.yaml
+#  kubectl get pods
+#  kubectl describe pod nginx-pod
+#  kubectl delete pod nginx-pod
+
+# how to get debuging logs 
+#  kubectl describe pod nginx-pod 
+#  kubectl logs nginx-pod
+
+# edit the pod 
+#  kubectl edit pod nginx-pod
+
+# how to exec into the pod
+#  kubectl exec -it nginx-pod -- /bin/bash
+#  kubectl exec -it nginx-pod -- /bin/sh
+
+# where the pod is running
+#  kubectl get pod nginx-pod -o wide
+
+# expose the pod
+#  kubectl expose pod nginx-pod --port=80 --target-port=80 --type=NodePort
+
+# get the service url of the pod after exposing it
+# minikube service nginx-pod --url
+
+
+
