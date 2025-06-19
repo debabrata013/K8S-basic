@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replicaset
+  labels:
+    app: nginx
+    env: demo
+    
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+      env: demo  # Match the pod template labels exactly
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: demo
+    spec:  # <== You missed this level
+      containers:
+        - name: nginx-container
+          image: nginx
+          ports:
+            - containerPort: 80

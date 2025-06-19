@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        resources:
+          requests:
+            memory: "64Mi" #requests are the minimum resources required by the container 64Mi is 64 Mebibytes of memory
+            cpu: "250m" #250m is 250 milliCPU, which is 0.25 of a CPU core
+          # The requests field specifies the minimum resources required by the container
+          # The limits field specifies the maximum resources allowed for the container
+        # The resources field is used to specify the resources required by the container
+        # The requests field is used to specify the minimum resources required by the container
+        # The limits field is used to specify the maximum resources allowed for the container
+        # The memory field is used to specify the memory required by the container
+        # The cpu field is used to specify the CPU required by the container
+        # The name field is used to specify the name of the container
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

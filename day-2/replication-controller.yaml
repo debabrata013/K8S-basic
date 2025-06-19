@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-rc
+  labels:          
+    env: demo
+spec:
+  replicas: 3
+  selector:
+    app: replication-controller
+  template:
+    metadata:
+      labels:
+        app: replication-controller
+    spec:
+      containers:
+        - name: nginx-pod
+          image: nginx
+          ports:
+            - containerPort: 80
+
+          # This is the container to run in the pod
+          # The image field specifies the image to use for the container
+          # The ports field specifies the ports to expose from the container
+
+
+# hear we have 2 metadata sections, one for the replication controller and one for the pod template
+# the pod template metadata is used to label the pods created by the replication controller
+# the selector is used to match the pods created by the replication controller
+# the replicas field is used to specify the number of pods to create
+# the template field is used to specify the pod template to use for the pods created by the replication controller
+# the container field is used to specify the container to run in the pod
+# the image field is used to specify the image to use for the container
+# the ports field is used to specify the ports to expose from the container
+# the containerPort field is used to specify the port to expose from the container
+# the name field is used to specify the name of the container
+# the lebels field is used to specify the labels for the replication controller
+# the app field is used to specify the application name for the pods created by the replication controller
+# the env field is used to specify the environment for the replication controller
+# the apiVersion field is used to specify the API version of the replication controller
+# the kind field is used to specify the kind of resource, in this case, a ReplicationController
+# the metadata field is used to specify the metadata for the replication controller
+# the spec field is used to specify the specification for the replication controller
+# the selector field is used to specify the selector for the replication controller
+# the template field is used to specify the pod template for the replication controller
+# the name field is used to specify the name of the replication controller
+# the lebels field is used to specify the labels for the replication controller
