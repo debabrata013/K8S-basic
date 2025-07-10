@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  
+  labels:
+    run: radis
+  name: radis
+spec:
+  containers:
+  - image: redis
+    name: radis
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+  - key: "gpu"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+status: {}
